@@ -39,7 +39,8 @@ func HTML(contentType string, w io.Writer, r io.Reader) error {
 // adding minifier into framework
 func addingHTMLMinifer(e *aah.Event) {
 	m = minify.New()
-	cfg := aah.AppConfig()
+	app := aah.App()
+	cfg := app.Config()
 
 	m.Add(htmlContentType, &html.Minifier{
 		KeepConditionalComments: cfg.BoolDefault("render.minify.html.keep.conditional_comments", true),
@@ -63,10 +64,10 @@ func addingHTMLMinifer(e *aah.Event) {
 	}
 
 	// set `HTML` minify func.
-	aah.SetMinifier(HTML)
+	app.SetMinifier(HTML)
 }
 
 func init() {
 	// register into aah framework
-	aah.OnInit(addingHTMLMinifer)
+	aah.App().OnInit(addingHTMLMinifer)
 }
