@@ -35,9 +35,9 @@ func HTML(contentType string, w io.Writer, r io.Reader) error {
 // Unexported methods
 //___________________________________
 
-// addingHTMLMinifer event func to initilize the minify instance and
-// adding minifier into framework
-func addingHTMLMinifer(e *aah.Event) {
+// AddHTMLMinifer method is aah's `OnStart` event func to initilize 
+// the minify instance and adding minifier into application.
+func AddHTMLMinifer(e *aah.Event) {
 	m = minify.New()
 	app := aah.App()
 	cfg := app.Config()
@@ -68,6 +68,5 @@ func addingHTMLMinifer(e *aah.Event) {
 }
 
 func init() {
-	// register into aah framework
-	aah.App().OnInit(addingHTMLMinifer)
+	aah.App().OnInit(AddHTMLMinifer)
 }
