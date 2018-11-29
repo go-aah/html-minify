@@ -7,6 +7,13 @@ HTML Minify Extension Library for aah framework
 
 _Since aah v0.10.x release, this package registered automatically and made active on profile `prod`._
 
+## Usage
+
+```bash
+# go.mod
+require aahframe.work/minify/html v0.1.0
+```
+
 ## Issues
 
 Please report issues at https://aahframework.org/issues.
